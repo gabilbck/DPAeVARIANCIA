@@ -1,0 +1,1 @@
+# Cálculos de Desvio Padrão, Variação e etc
