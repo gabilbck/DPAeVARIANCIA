@@ -1,78 +1,73 @@
 /*
 DPa = √(Xi - MAS)^2 - .... / n[i]
+
+11, 12, 13, 15, 17, 17, 18, 21
+14, 15, 15, 15, 16, 16, 16, 17
+11, 11, 11, 12, 19, 20, 20, 20
 */
 
 // Amostras
-var arr = [ 
-    14, 15, 15, 15, 16, 16, 16, 17
-];
+var amostraArr = [11, 11, 11, 12, 19, 20, 20, 20];
 
 var resultado = 0;
-
+var nAmostras = amostraArr.length;
+ 
 // Função para calcular a média aritmética simples
-function medArtS(nAmostras) {
-    resultado = 0; // Variável local para evitar acúmulo
-    for (var i = 0; i < arr.length
-         ; i++) {
-        resultado += arr[i]; // Soma os valores
-    }
-    // Divide a soma pela quantidade de amostras
-    var masT = resultado / Math.fround(nAmostras);
-    return masT;
+function mediaAritmeticaSimples(nAmostras) {
+  var soma = 0;
+  for (var i = 0; i < nAmostras; i++) {
+    soma += amostraArr[i]; // Soma os valores
+  }
+  console.log('Soma Total das amostras: ' + soma);
+  return (resultado = soma / Math.fround(nAmostras)); // Divide a soma pela quantidade de amostras
 }
 
-var mas = medArtS(arr.length);
-console.log("Média Aritmética Simples:", mas);
-console.log(" ");
+var mas = mediaAritmeticaSimples(nAmostras);
+console.log('Média Aritmética Simples:', mas);
+console.log(' ');
 
 // Desvio (Xi - MAS)
-function desvio(amostra, masT){
-    var desvio = 0;
-    var desvio = amostra - masT;
-    return desvio;
+function desvio(amostra, masT) {
+  return (resultado = amostra - masT);
 }
 
-for (var i = 0; i < arr.length; i++) {
-    resultado = desvio(arr[i], mas);
-    console.log(arr[i]+": Desvio= "+resultado);
-    arr[i] = Math.pow(resultado, 2);
-    console.log("Desvio²: "+arr[i]);
-    console.log(" ");
+for (var i = 0; i < nAmostras; i++) {
+  resultado = desvio(amostraArr[i], mas);
+  console.log(amostraArr[i] + ': Desvio= ' + resultado);
+  amostraArr[i] = Math.pow(resultado, 2);
+  console.log('Desvio²: ' + amostraArr[i]);
+  console.log(' ');
 }
 
 // Soma dos desvios²
-function somaIncrementado(){
-    var resultado = 0;
-    for(var i=0; i<arr.length; i++){
-        resultado += arr[i];
-    }
-    return resultado;
+function somaIncrementado() {
+  var resultado = 0;
+  for (var i = 0; i < nAmostras; i++) {
+    resultado += amostraArr[i];
+  }
+  return resultado;
 }
 
 somaDesvios = somaIncrementado();
-console.log("Soma desvios²: ", somaDesvios);
+console.log('Soma desvios²: ', somaDesvios);
 
 // Variância (Amostra)
-function varianciaA(soma, nAmostras){
-    resultado = 0;
-    resultado = soma/(nAmostras - 1);
-    return resultado;
+function varianciaA(soma, nAmostras) {
+  return (resultado = soma / (nAmostras - 1));
 }
 
 var va = varianciaA(somaDesvios, 8);
-console.log("Variância (amostra): "+va);
-console.log(" ");
+console.log('Variância (amostra): ' + va);
+console.log(' ');
 
-function desvioPadrao(variancia){
-    return resultado = Math.sqrt(variancia);
+function desvioPadrao(variancia) {
+  return (resultado = Math.sqrt(variancia));
 }
 
 var dpa = desvioPadrao(va);
-console.log("Desvio padrão (amostra):  "+Math.fround(dpa));
+console.log('Desvio padrão (amostra):  ' + Math.fround(dpa));
 
-// for (var i = 0; i < arr.length; i++) {
-//     arr[i] = Math.sqrt(arr[i]/Math.fround(6));
-//     console.log(arr[i]);
+// for (var i = 0; i < nAmostras; i++) {
+//     amostraArr[i] = Math.sqrt(amostraArr[i]/Math.fround(6));
+//     console.log(amostraArr[i]);
 // }
-
-
